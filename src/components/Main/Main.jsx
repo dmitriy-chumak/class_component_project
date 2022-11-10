@@ -26,9 +26,14 @@ class Main extends Component {
   }
 
   rememberCount = (id, count, amount) => {
-    const newCount = this.state.allProduct.find(element => element.id === id);
-    newCount.count = count;
-    newCount.amount = amount;
+    this.setState({
+      allProduct: this.state.allProduct.map(elem => {
+        if (elem.id === id) {
+          elem.count = count;
+          elem.amount = amount;
+        }
+      })
+    });
   }
 
   render() {
