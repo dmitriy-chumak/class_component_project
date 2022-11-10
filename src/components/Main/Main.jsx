@@ -25,7 +25,7 @@ class Main extends Component {
     this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
   }
 
-  rememberCount = async (id, count, amount) => {
+  rememberCount = (id, count, amount) => {
     this.setState({
       allProduct: this.state.allProduct.map(elem => {
         if (elem.id === id) {
