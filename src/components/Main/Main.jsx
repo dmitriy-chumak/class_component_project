@@ -25,18 +25,20 @@ class Main extends Component {
     this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
   }
 
-  rememberCount = (id, count, amount) => {
+  rememberCount = async (id, count, amount) => {
     this.setState({
       allProduct: this.state.allProduct.map(elem => {
         if (elem.id === id) {
           elem.count = count;
           elem.amount = amount;
         }
+        return elem;
       })
     });
   }
 
   render() {
+    console.log("render", this.state.allProduct);
     return (
       <div className="main">
         <Header searchProduct={this.searchProduct} valueBasket={this.state.valueBasket}/>
