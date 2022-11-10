@@ -1,10 +1,53 @@
 import { Component } from 'react';
+import CardOnList from 'components/CardOnList/CardOnList';
+import Header from 'components/Header/Header';
+import filter from 'helpers/filter';
+import list from 'constants'
+import './style.scss';
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      allProduct: list,
+      copyAllProduct: list,
+      valueBasket: 0,
+    }
+  }
+
+  searchProduct = (searchText) => {
+    const result = filter(this.state.allProduct, searchText);
+    this.setState({copyAllProduct: result});
+  }
+
+  calculateValueBasket = (price) => {
+    this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
+  }
+
+  rememberCount = (id, count, amount) => {
+    const newCount = this.state.allProduct.find(element => element.id === id);
+    newCount.count = count;
+    newCount.amount = amount;
+  }
+
   render() {
     return (
-      <div>
-        
+      <div className="main">
+        <Header searchProduct={this.searchProduct} valueBasket={this.state.valueBasket}/>
+        <div className="main__cards">
+          { this.state.copyAllProduct.length !== 0
+            ? (this.state.copyAllProduct.map(product => 
+              <CardOnList 
+                {...product} 
+                key={product.id} 
+                calculateValueBasket={this.calculateValueBasket}
+                rememberCount={this.rememberCount}
+              />
+              ))
+            : (<h1>Product not found</h1>)
+          }
+        </div>
       </div>
     );
   }

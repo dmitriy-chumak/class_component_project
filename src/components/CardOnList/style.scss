@@ -1,0 +1,65 @@
+.card {
+  height: 300px;
+  width: 270px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(249, 249, 249);
+  margin: 20px;
+  box-shadow: 0 3px 5px rgb(77, 102, 89);
+  align-self: center;
+
+  &__select {
+    background-color: aquamarine;
+  }
+
+  &__image {
+    width: 220px;
+    height: 160px;
+    margin-top: 20px;
+    object-fit:cover;
+    object-position: 50% 50%;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: lighter;
+    margin: 5px 15px;
+
+    &_cost {
+      align-self: flex-start;
+    }
+
+    &_amount {
+      align-self: flex-end;
+    }
+  }
+
+  &__span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &_button {
+      height: 25px;
+      width: 25px;
+      border: none;
+      background-color: rgb(50, 50, 50);
+      font-weight: bold;
+      color: white;
+      border-radius: 50px;
+
+      &_increment {
+        margin-left: 10px;
+      }
+
+      &_decrement {
+        margin-right: 10px;
+      }
+    }
+
+    &_count {
+      font-size: 22px;
+    }
+  }
+}
