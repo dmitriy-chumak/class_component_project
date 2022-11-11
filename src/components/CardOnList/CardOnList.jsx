@@ -23,7 +23,7 @@ class CardOnList extends Component {
     await this.setState(prevState => ({countPick: prevState.countPick - 1}));
     await this.setState(prevState => ({amount: prevState.amount + 1}));
     this.props.calculateValueBasket(-this.props.cost);
-    this.props.rememberCount(this.props.id, this.state.countPick);
+    this.props.rememberCount(this.props.id, this.state.countPick, this.state.amount);
   }
 
   addProductInBasket = async (e) => {

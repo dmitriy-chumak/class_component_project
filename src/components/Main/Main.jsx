@@ -38,7 +38,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log("render", this.state.allProduct);
     return (
       <div className="main">
         <Header searchProduct={this.searchProduct} valueBasket={this.state.valueBasket}/>
