@@ -2,7 +2,7 @@ import { Component } from 'react';
 import CardOnList from 'components/CardOnList/CardOnList';
 import Header from 'components/Header/Header';
 import filter from 'helpers/filter';
-import list from 'constants'
+import { list } from 'constants'
 import './style.scss';
 
 class Main extends Component {
@@ -21,11 +21,23 @@ class Main extends Component {
     this.setState({copyAllProduct: result});
   }
 
-  calculateValueBasket = (price) => {
-    this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
+  calculateValueBasket = (sign, price) => {
+    switch (sign) {
+      case "+":
+        this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
+        break;
+      
+      case "-":
+        this.setState(prevState => ({valueBasket: prevState.valueBasket - price}));
+        break;
+
+      default:
+        break;
+    }
   }
 
   rememberCount = (id, count, amount) => {
+    console.log('maincount',count);
     this.setState({
       allProduct: this.state.allProduct.map(elem => {
         if (elem.id === id) {

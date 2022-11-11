@@ -1,11 +1,9 @@
-import Main from "components/Main/Main";
-
+import Main from 'components/Main/Main';
 
 const App = () => {
-  const valueBasket = 1;
   return (
     <div className="App">
-      <Main valueBasket={valueBasket}/>
+      <Main/>
     </div>
   );
 }

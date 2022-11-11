@@ -65,4 +65,6 @@ const list = [
   },
 ];
 
-export default list;
+const imageHeader = "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/atom.svg";
+
+export { list, imageHeader };

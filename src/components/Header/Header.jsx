@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { imageHeader } from 'constants';
 import './style.scss';
 
 class Header extends Component {
@@ -17,6 +18,7 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
+        <img src={imageHeader} alt="Logo" className="header__image"/>
         <input
           className="header__input" 
           type="text"
@@ -28,7 +30,9 @@ class Header extends Component {
           className="header__button"
           type="button"
           onClick={() => this.props.searchProduct(this.state.searchText)}
-        >Поиск</button>
+        >
+          Поиск
+        </button>
         <p>Общая стоимость выбранных товаров: {this.props.valueBasket} </p>
       </div>
     );
