@@ -17,27 +17,27 @@ class Main extends Component {
   }
 
   searchProduct = (searchText) => {
-    const result = filter(this.state.allProduct, searchText);
-    this.setState({copyAllProduct: result});
+    const filtredArray = filter(this.state.allProduct, searchText);
+    this.setState({copyAllProduct: filtredArray});
   }
 
   calculateValueBasket = (sign, price) => {
     switch (sign) {
       case "+":
-        this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
+        {
+          this.setState(prevState => ({valueBasket: prevState.valueBasket + price}));
+        }
         break;
       
       case "-":
-        this.setState(prevState => ({valueBasket: prevState.valueBasket - price}));
-        break;
-
-      default:
+        {
+          this.setState(prevState => ({valueBasket: prevState.valueBasket - price}));
+        }
         break;
     }
   }
 
   rememberCount = (id, count, amount) => {
-    console.log('maincount',count);
     this.setState({
       allProduct: this.state.allProduct.map(elem => {
         if (elem.id === id) {

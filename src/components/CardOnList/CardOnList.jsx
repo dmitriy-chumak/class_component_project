@@ -20,7 +20,6 @@ class CardOnList extends Component {
     ));
     this.props.calculateValueBasket("+", this.props.cost);
     this.props.rememberCount(this.props.id, this.state.countOnBasket, this.state.amountOnStorage);
-    console.log("func", this.state.countOnBasket);
   }
 
   deleteProduct = async () => {

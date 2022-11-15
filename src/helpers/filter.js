@@ -1,11 +1,11 @@
 const filter = (array, string) => {
-  const result = [];
+  const filtredArray = [];
   array.forEach(element => {
     if (element.title.toLowerCase().includes(string.toLowerCase().trim())) {
-      result.push(element);
+      filtredArray.push(element);
     }
   });
-  return result;
+  return filtredArray;
 }
 
 export default filter;
