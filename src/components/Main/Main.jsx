@@ -44,6 +44,7 @@ class Main extends Component {
           elem.count = count;
           elem.amount = amount;
         }
+        
         return elem;
       })
     });

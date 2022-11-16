@@ -11,49 +11,45 @@ class CardOnList extends Component {
     }
   }
 
-  addProduct = async () => {
-    await this.setState(prevState => (
-      {
-        countOnBasket: prevState.countOnBasket + 1,
-        amountOnStorage: prevState.amountOnStorage - 1
-      }
-    ));
-    this.props.calculateValueBasket("+", this.props.cost);
-    this.props.rememberCount(this.props.id, this.state.countOnBasket, this.state.amountOnStorage);
-  }
-
-  deleteProduct = async () => {
-    await this.setState(prevState => (
-      {
-        countOnBasket: prevState.countOnBasket - 1,
-        amountOnStorage: prevState.amountOnStorage + 1
-      }
-    ));
-    this.props.calculateValueBasket("-", this.props.cost);
-    this.props.rememberCount(this.props.id, this.state.countOnBasket, this.state.amountOnStorage);
-  }
-
-  addProductInBasket = (e) => {
+  addProductInBasket = async (e) => {
     e.stopPropagation();
+
     if (this.state.amountOnStorage > 0) {
-      this.addProduct();
+      await this.setState(prevState => (
+        {
+          countOnBasket: prevState.countOnBasket + 1,
+          amountOnStorage: prevState.amountOnStorage - 1
+        }
+      ));
+      
+      this.props.calculateValueBasket("+", this.props.cost);
+      this.props.rememberCount(this.props.id, this.state.countOnBasket, this.state.amountOnStorage);
     }
   }
 
-  deleteProductFromBasket = (e) => {
+  deleteProductFromBasket = async (e) => {
     e.stopPropagation();
+
     if (this.state.countOnBasket > 0) {
-      this.deleteProduct();
+      await this.setState(prevState => (
+        {
+          countOnBasket: prevState.countOnBasket - 1,
+          amountOnStorage: prevState.amountOnStorage + 1
+        }
+      ));
+
+      this.props.calculateValueBasket("-", this.props.cost);
+      this.props.rememberCount(this.props.id, this.state.countOnBasket, this.state.amountOnStorage);
     }
   }
 
-  selectCard = () => {
+  selectCard = (e) => {
     if (this.state.countOnBasket === 0) {
-      this.addProduct();
+      this.addProduct(e);
     }
 
     if (this.state.countOnBasket === 1) {
-      this.deleteProduct();
+      this.deleteProduct(e);
     }
   }
 
