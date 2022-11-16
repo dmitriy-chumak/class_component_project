@@ -1,0 +1,33 @@
+.main {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: rgb(171, 223, 197);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: auto;
+    margin-top: 75px;
+  }
+}
+
+@media (max-width: 1532px) {
+  .main__cards {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (max-width: 1236px) {
+  .main__cards {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 940px) {
+  .main__cards {
+    grid-template-columns: repeat(2, auto);
+  }
+}
